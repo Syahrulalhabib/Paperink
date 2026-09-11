@@ -1,0 +1,53 @@
+/* CTABanner — light grey background, accent gold button */
+.cta-banner {
+  background: var(--grey-50);
+  border-top: 1px solid var(--grey-200);
+  border-bottom: 1px solid var(--grey-200);
+  padding: 72px 0;
+  text-align: center;
+}
+.cta-banner__inner { position: relative; z-index: 1; }
+.cta-banner__tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--grey-300);
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+.cta-banner__title {
+  font-family: var(--font-head);
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  font-weight: 800;
+  color: var(--grey-900);
+  letter-spacing: -0.022em;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.cta-banner__sub {
+  font-size: 0.97rem;
+  color: var(--grey-500);
+  max-width: 440px;
+  margin-inline: auto;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+.cta-banner__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.cta-banner__info {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--grey-400);
+}
+
+
