@@ -43,7 +43,7 @@ function ThemeToggle({ dark, toggle }) {
   );
 }
 
-export default function Navbar() {
+export default function Navbar({ onNavigate }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [dark, toggleDark] = useDarkMode();
@@ -84,7 +84,14 @@ export default function Navbar() {
     document.body.style.overflow = '';
 
     const el = document.querySelector(href);
-    if (!el) return;
+    if (!el) {
+      if (onNavigate) {
+        onNavigate(href);
+      } else {
+        window.location.href = href === '#hero' ? '/' : `/${href}`;
+      }
+      return;
+    }
 
     const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 80;
     requestAnimationFrame(() => {

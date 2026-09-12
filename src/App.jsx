@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar    from './components/Navbar';
 import Hero      from './components/Hero';
 import Values    from './components/Values';
@@ -8,10 +8,26 @@ import Stats     from './components/Stats';
 import FAQ       from './components/FAQ';
 import CTABanner from './components/CTABanner';
 import Footer    from './components/Footer';
+import NotFound  from './components/NotFound';
 
 const WA = 'https://wa.me/6287800088006?text=Halo%20Paperink%2C%20saya%20ingin%20tanya%20mengenai%20merchandise%20custom.';
 
+function is404(pathname) {
+  const clean = pathname.replace(/\/+$/, '') || '/';
+  return clean !== '/' && clean !== '/index.html';
+}
+
 export default function App() {
+  const [path, setPath] = useState(() => (typeof window !== 'undefined' ? window.location.pathname : '/'));
+
+  useEffect(() => {
+    const onPopState = () => {
+      setPath(window.location.pathname);
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
   useEffect(() => {
     // Bersihkan hash dari URL (misal #produk) agar URL tetap bersih http://localhost:5173/
     if (window.location.hash) {
@@ -32,7 +48,11 @@ export default function App() {
       const targetSelector = anchor.getAttribute('href');
       if (!targetSelector || targetSelector === '#') return;
       const el = document.querySelector(targetSelector);
-      if (!el) return;
+      if (!el) {
+        e.preventDefault();
+        handleGoHome(targetSelector);
+        return;
+      }
 
       e.preventDefault();
       const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 80;
@@ -45,7 +65,25 @@ export default function App() {
 
     document.addEventListener('click', onAnchorClick);
     return () => document.removeEventListener('click', onAnchorClick);
-  }, []);
+  }, [path]);
+
+  const handleGoHome = (targetHash) => {
+    window.history.pushState(null, '', targetHash ? `/${targetHash}` : '/');
+    setPath('/');
+    if (targetHash) {
+      setTimeout(() => {
+        const el = document.querySelector(targetHash);
+        if (el) {
+          const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 80;
+          window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const isNotFoundPage = is404(path);
 
   return (
     <>
@@ -56,17 +94,26 @@ export default function App() {
         </svg>
       </a>
 
-      <Navbar />
+      <Navbar onNavigate={handleGoHome} />
+
       <main>
-        <Hero />
-        <Values />
-        <Products />
-        <Portfolio />
-        <Stats />
-        <FAQ />
-        <CTABanner />
+        {isNotFoundPage ? (
+          <NotFound onGoHome={handleGoHome} />
+        ) : (
+          <>
+            <Hero />
+            <Values />
+            <Products />
+            <Portfolio />
+            <Stats />
+            <FAQ />
+            <CTABanner />
+          </>
+        )}
       </main>
+
       <Footer />
     </>
   );
 }
+
