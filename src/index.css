@@ -199,7 +199,6 @@ html.dark body {
 
 /* sec-tag & semua tag varian: warna sama seperti light mode */
 html.dark .sec-tag,
-html.dark .hero__tag,
 html.dark .cta-banner__tag,
 html.dark .stats__tag {
   color: #4A4A4A !important;

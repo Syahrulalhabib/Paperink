@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const KEY = 'paperink-theme-v2';
+const KEY = 'paperink-theme-v3';
 
 function applyTheme(dark, save = false) {
   const root = document.documentElement;
@@ -18,17 +18,19 @@ function applyTheme(dark, save = false) {
 export default function useDarkMode() {
   const [dark, setDark] = useState(() => {
     try {
-      localStorage.removeItem('paperink-theme'); // bersihkan cache auto-dark lama
+      // Bersihkan cache preferensi versi lama agar pengunjung baru/lama mengikuti default dark mode
+      localStorage.removeItem('paperink-theme');
+      localStorage.removeItem('paperink-theme-v2');
       const stored = localStorage.getItem(KEY);
       if (stored !== null) return stored === 'dark';
     } catch {
       // ignore
     }
-    // Default selalu Light Mode untuk setiap pengunjung
-    return false;
+    // Default langsung Dark Mode
+    return true;
   });
 
-  // Mount: terapkan tanpa transisi (no flash)
+  // Mount: sinkronkan tanpa flash transisi
   useEffect(() => {
     const root = document.documentElement;
     root.classList.add('no-transition');
@@ -50,4 +52,5 @@ export default function useDarkMode() {
 
   return [dark, toggle];
 }
+
 
