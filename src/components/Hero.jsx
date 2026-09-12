@@ -2,12 +2,61 @@ import { useState, useEffect, useRef } from 'react';
 import './Hero.css';
 
 const HERO_SLIDES = [
-  { id: 1, src: '/images/portfolio/tumbler-sakura-led.jpg', alt: 'Vacuum Flask Sakura Bamboo Lid', badge: 'Drinkware' },
-  { id: 2, src: '/images/portfolio/portfolio-toyota-notebook.jpg', alt: 'Custom Leather Agenda Toyota', badge: 'Notebook & Pen' },
-  { id: 3, src: '/images/portfolio/tumbler-sport-metalic.jpg', alt: 'Tumbler Sport Carabiner Series', badge: 'Drinkware' },
-  { id: 4, src: '/images/portfolio/portfolio-mercure-flashdisk.jpg', alt: 'Metal Keychain Flashdisk Mercure Hotel', badge: 'Flashdisk' },
-  { id: 5, src: '/images/notebook/basic-notebook-pu.jpg', alt: 'Basic Notebook PU Leather', badge: 'Notebook & Pen' },
-  { id: 6, src: '/images/portfolio/leather-personal-notebook.jpg', alt: 'Executive Leather Personal Agenda', badge: 'Notebook & Pen' },
+  {
+    id: 1,
+    src: '/images/banner-hero.png',
+    alt: 'Paperink Official Corporate Merchandise Showcase',
+    badge: 'Paperink Official',
+    isBanner: true,
+  },
+  {
+    id: 2,
+    src: '/images/tumbler/classic/classic.png',
+    alt: 'Classic Tumbler Custom Corporate',
+    badge: 'Drinkware',
+  },
+  {
+    id: 3,
+    src: '/images/tumbler/tumbler-sport-jumbo.jpg',
+    alt: 'Tumbler Sport Jumbo Corporate Gifting',
+    badge: 'Drinkware',
+  },
+  {
+    id: 4,
+    src: '/images/tumbler/tumbler-mug/tumbler-mug-1.png',
+    alt: 'Tumbler Mug Stainless Steel',
+    badge: 'Drinkware',
+  },
+  {
+    id: 5,
+    src: '/images/notebook/standard/notebook-1.png',
+    alt: 'Standard Corporate Notebook',
+    badge: 'Notebook & Pen',
+  },
+  {
+    id: 6,
+    src: '/images/sticky-notes/sticky-notes-1.png',
+    alt: 'Sticky Notes Custom Set',
+    badge: 'Stationery',
+  },
+  {
+    id: 7,
+    src: '/images/notebook/notebook-planer-maple.jpg',
+    alt: 'Notebook Planner Maple Series',
+    badge: 'Notebook & Pen',
+  },
+  {
+    id: 8,
+    src: '/images/flashdisk/standard/flashdisk-2.png',
+    alt: 'Standard Custom Metal Flashdisk',
+    badge: 'Flashdisk',
+  },
+  {
+    id: 9,
+    src: '/images/flashdisk/otg/flashdisk-otg-1.png',
+    alt: 'Flashdisk OTG Dual Port Corporate',
+    badge: 'Flashdisk',
+  },
 ];
 
 export default function Hero() {
@@ -76,11 +125,17 @@ export default function Hero() {
         >
           {HERO_SLIDES.map((slide, idx) => (
             <div className="hero-slider__slide" key={slide.id}>
+              {/* Ambient blurred backdrop so full 1 page is filled without cropping 1:1 photo */}
+              <div
+                className="hero-slider__bg"
+                style={{ backgroundImage: `url(${slide.src})` }}
+                aria-hidden="true"
+              />
               {!imgErrors[slide.id] ? (
                 <img
                   src={slide.src}
                   alt={slide.alt}
-                  className="hero-slider__img"
+                  className={`hero-slider__img ${slide.isBanner ? 'hero-slider__img--banner' : 'hero-slider__img--square'}`}
                   loading={idx === 0 ? 'eager' : 'lazy'}
                   onError={() => setImgErrors((p) => ({ ...p, [slide.id]: true }))}
                 />
@@ -127,9 +182,29 @@ export default function Hero() {
             />
           ))}
         </div>
+
+        {/* Scroll hint to text below */}
+        <button
+          type="button"
+          className="hero-slider__scroll-hint"
+          onClick={(e) => {
+            e.stopPropagation();
+            const el = document.getElementById('hero-content');
+            if (el) {
+              const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 80;
+              window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
+            }
+          }}
+          aria-label="Scroll ke konten"
+        >
+          <span>Scroll</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
       </div>
-      {/* 2. Text Content (Underneath the slider) */}
-      <div className="hero__content">
+      {/* 2. Text Content (Underneath the full-screen slider) */}
+      <div className="hero__content" id="hero-content">
         <div className="container">
           <div className="hero__tag">
             Supplier Merchandise Corporate
