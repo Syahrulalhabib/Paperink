@@ -95,7 +95,6 @@ function ProductCard({ p, delay, intervalOffset = 0 }) {
               <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
             </svg>
             <span className="product-card__fallback-title">{currentSlide.label}</span>
-            <span className="product-card__fallback-path">{currentSlide.src.replace('/images/', '')}</span>
           </div>
         )}
 

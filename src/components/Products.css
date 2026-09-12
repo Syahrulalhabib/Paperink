@@ -105,13 +105,8 @@
 .product-card__fallback.show { display: flex; }
 .product-card__fallback-title {
   font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--grey-800);
-}
-.product-card__fallback-path {
-  font-size: 0.68rem;
-  color: var(--grey-400);
-  font-family: monospace;
+  font-weight: 600;
+  color: var(--grey-700);
 }
 
 .product-card__info {
