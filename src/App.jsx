@@ -21,6 +21,19 @@ export default function App() {
   const [path, setPath] = useState(() => (typeof window !== 'undefined' ? window.location.pathname : '/'));
 
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    const onBeforeUnload = () => {
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('beforeunload', onBeforeUnload);
+    return () => window.removeEventListener('beforeunload', onBeforeUnload);
+  }, []);
+
+  useEffect(() => {
     const onPopState = () => {
       setPath(window.location.pathname);
     };
