@@ -8,7 +8,7 @@ const items = [
   { id: 1, img: '/images/portfolio/portfolio-toyota-notebook.jpg',    label: 'Custom Leather Agenda',                      tab: 'Notebook & Pen' },
   { id: 2, img: '/images/portfolio/tumbler-sakura-led.jpg',            label: 'Vacuum Flask Sakura Bamboo Lid',              tab: 'Tumbler' },
   { id: 3, img: '/images/sticky-notes/sticky-notes-4.png',             label: 'Custom Memo Sticky Notes Pad',              tab: 'Sticky Notes' },
-  { id: 4, img: '/images/portfolio/portfolio-mercure-flashdisk.jpg',   label: 'Metal Keychain Flashdisk — Mercure Hotel',  tab: 'Flashdisk' },
+  { id: 4, img: '/images/portfolio/portfolio-mercure-flashdisk.jpg',   label: 'Metal Keychain Flashdisk',                  tab: 'Flashdisk' },
   { id: 5, img: '/images/portfolio/tumbler-sport-metalic.jpg',         label: 'Tumbler Sport Carabiner Series',            tab: 'Tumbler' },
   { id: 6, img: '/images/portfolio/leather-personal-notebook.jpg',     label: 'Personal PU Leather Agenda + Pen',          tab: 'Notebook & Pen' },
   { id: 7, img: '/images/sticky-notes/sticky-notes-5.png',             label: 'Executive Sticky Notes Booklet',            tab: 'Sticky Notes' },
