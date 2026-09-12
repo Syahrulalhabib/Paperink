@@ -2,11 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import './Hero.css';
 
 const HERO_SLIDES = [
-  { id: 1, src: '/images/banner-hero.png', alt: 'Corporate Merchandise Showcase', badge: 'Paperink Official' },
-  { id: 2, src: '/images/portfolio/tumbler-sakura-led.jpg', alt: 'Vacuum Flask Sakura Bamboo Lid', badge: 'Drinkware' },
-  { id: 3, src: '/images/portfolio/portfolio-toyota-notebook.jpg', alt: 'Custom Leather Agenda Toyota', badge: 'Notebook & Pen' },
-  { id: 4, src: '/images/portfolio/tumbler-sport-metalic.jpg', alt: 'Tumbler Sport Carabiner Series', badge: 'Drinkware' },
-  { id: 5, src: '/images/portfolio/portfolio-mercure-flashdisk.jpg', alt: 'Metal Keychain Flashdisk Mercure Hotel', badge: 'Flashdisk' },
+  { id: 1, src: '/images/portfolio/tumbler-sakura-led.jpg', alt: 'Vacuum Flask Sakura Bamboo Lid', badge: 'Drinkware' },
+  { id: 2, src: '/images/portfolio/portfolio-toyota-notebook.jpg', alt: 'Custom Leather Agenda Toyota', badge: 'Notebook & Pen' },
+  { id: 3, src: '/images/portfolio/tumbler-sport-metalic.jpg', alt: 'Tumbler Sport Carabiner Series', badge: 'Drinkware' },
+  { id: 4, src: '/images/portfolio/portfolio-mercure-flashdisk.jpg', alt: 'Metal Keychain Flashdisk Mercure Hotel', badge: 'Flashdisk' },
+  { id: 5, src: '/images/notebook/basic-notebook-pu.jpg', alt: 'Basic Notebook PU Leather', badge: 'Notebook & Pen' },
+  { id: 6, src: '/images/portfolio/leather-personal-notebook.jpg', alt: 'Executive Leather Personal Agenda', badge: 'Notebook & Pen' },
 ];
 
 export default function Hero() {
