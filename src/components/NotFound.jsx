@@ -4,8 +4,6 @@ import './NotFound.css';
 const WA_URL = 'https://wa.me/6287800088006?text=Halo%20Paperink%2C%20saya%20membuka%20link%20yang%20tidak%20ditemukan%20dan%20ingin%20tanya%20merchandise.';
 
 export default function NotFound({ onGoHome }) {
-  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
-
   useEffect(() => {
     const originalTitle = document.title;
     document.title = '404 - Halaman Tidak Ditemukan | Paperink Official';
@@ -34,11 +32,6 @@ export default function NotFound({ onGoHome }) {
           </div>
 
           <h1 className="notfound__title">Halaman Tidak Ditemukan</h1>
-
-          <p className="notfound__desc">
-            Endpoint <code className="notfound__code-badge">{currentPath}</code> tidak tersedia.
-            Halaman yang Anda tuju mungkin salah ketik, telah dihapus, atau belum tersedia.
-          </p>
 
           <div className="notfound__actions">
             <button
