@@ -144,7 +144,7 @@ export default function Products() {
             <ProductCard
               key={p.id}
               p={p}
-              delay={`d${(i % 3) + 1}`}
+              delay={`d${i + 1}`}
               intervalOffset={(i % 3) * 350}
             />
           ))}

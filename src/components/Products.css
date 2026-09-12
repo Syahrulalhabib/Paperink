@@ -11,12 +11,37 @@
   border-radius: var(--r-md);
   overflow: hidden;
   border: 1px solid var(--grey-200);
-  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
   cursor: pointer;
   display: flex;
   flex-direction: column;
 }
-.product-card:hover { transform: translateY(-6px); box-shadow: var(--sh-lg); }
+
+/* Scroll entrance animation: smooth fade + soft upward glide */
+.product-card.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s var(--ease);
+  will-change: opacity, transform;
+}
+
+.product-card.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-card.reveal.d1 { transition-delay: 0.06s !important; }
+.product-card.reveal.d2 { transition-delay: 0.18s !important; }
+.product-card.reveal.d3 { transition-delay: 0.30s !important; }
+.product-card.reveal.d4 { transition-delay: 0.42s !important; }
+
+.product-card.visible:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sh-lg);
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
 
 .product-card__img-wrap {
   position: relative;
