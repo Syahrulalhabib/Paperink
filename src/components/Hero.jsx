@@ -4,8 +4,7 @@ import './Hero.css';
 const HERO_SLIDES = [
   {
     id: 1,
-    src: '/images/banner-hero.png',              // Web / Desktop banner
-    mobileSrc: '/images/banner-hero-mobile.png', // Mobile banner
+    src: '/images/banner-hero.png',
     alt: 'Paperink Official Corporate Merchandise Showcase',
     badge: 'Paperink Official',
     isBanner: true,

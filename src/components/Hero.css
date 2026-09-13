@@ -13,8 +13,8 @@
   position: relative;
   border-radius: 0;
   overflow: hidden;
-  /* Proportional 3:1 banner ratio matching asset dimensions (3750x1250) */
-  aspect-ratio: 3 / 1;
+  /* Proportional 16:9 banner ratio matching asset dimensions (3840x2160) */
+  aspect-ratio: 16 / 9;
   background: #0A0A0A;
   display: flex;
   align-items: center;
@@ -309,20 +309,20 @@ html.dark .hero__cta-btn:hover {
 /* Tablet responsive */
 @media (max-width: 1024px) {
   .hero__slider-wrap {
-    aspect-ratio: 3 / 1;
+    aspect-ratio: 16 / 9;
   }
   .hero__content {
     padding: 64px 0 72px;
   }
 }
 
-/* Mobile responsive — Proportional 3:1 banner */
+/* Mobile responsive — Proportional 16:9 banner */
 @media (max-width: 768px) {
   .hero__slider-wrap {
     width: 100%;
     margin: 0;
     border-radius: 0;
-    aspect-ratio: 3 / 1;
+    aspect-ratio: 16 / 9;
     box-shadow: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
@@ -394,7 +394,7 @@ html.dark .hero__cta-btn:hover {
 /* Small mobile responsive */
 @media (max-width: 480px) {
   .hero__slider-wrap {
-    aspect-ratio: 3 / 1;
+    aspect-ratio: 16 / 9;
   }
   .hero__content {
     padding: 36px 0 44px;
