@@ -13,10 +13,8 @@
   position: relative;
   border-radius: 0;
   overflow: hidden;
-  /* Desktop / Web: Wide banner ratio ~3:1 (reference Primagraphia) */
+  /* Proportional 3:1 banner ratio matching asset dimensions (3750x1250) */
   aspect-ratio: 3 / 1;
-  min-height: 380px;
-  max-height: 520px;
   background: #0A0A0A;
   display: flex;
   align-items: center;
@@ -86,7 +84,7 @@
 .hero-slider__img--banner {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
 }
@@ -311,25 +309,20 @@ html.dark .hero__cta-btn:hover {
 /* Tablet responsive */
 @media (max-width: 1024px) {
   .hero__slider-wrap {
-    aspect-ratio: 2.4 / 1;
-    min-height: 280px;
-    max-height: 420px;
+    aspect-ratio: 3 / 1;
   }
   .hero__content {
     padding: 64px 0 72px;
   }
 }
 
-/* Mobile responsive — Proportional mobile banner like reference */
+/* Mobile responsive — Proportional 3:1 banner */
 @media (max-width: 768px) {
   .hero__slider-wrap {
     width: 100%;
     margin: 0;
     border-radius: 0;
-    /* Mobile banner size: proportional 16:9 ratio like reference */
-    aspect-ratio: 16 / 9;
-    min-height: 200px;
-    max-height: 320px;
+    aspect-ratio: 3 / 1;
     box-shadow: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
@@ -341,7 +334,7 @@ html.dark .hero__cta-btn:hover {
   .hero-slider__img--banner {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 0;
   }
   html.dark .hero__slider-wrap {
@@ -349,28 +342,32 @@ html.dark .hero__cta-btn:hover {
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
   .hero-slider__btn {
-    width: 34px;
-    height: 34px;
+    width: 28px;
+    height: 28px;
   }
-  .hero-slider__btn--prev { left: 8px; }
-  .hero-slider__btn--next { right: 8px; }
+  .hero-slider__btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  .hero-slider__btn--prev { left: 4px; }
+  .hero-slider__btn--next { right: 4px; }
   .hero-slider__badge {
-    top: 10px;
-    left: 10px;
-    font-size: 0.68rem;
-    padding: 3px 10px;
+    top: 8px;
+    left: 8px;
+    font-size: 0.65rem;
+    padding: 2px 8px;
   }
   .hero-slider__dots {
-    bottom: 10px;
-    padding: 4px 10px;
-    gap: 6px;
+    bottom: 6px;
+    padding: 3px 8px;
+    gap: 5px;
   }
   .hero-slider__dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
   }
   .hero-slider__dot.active {
-    width: 18px;
+    width: 14px;
   }
   .hero__content {
     padding: 44px 0 52px;
@@ -397,9 +394,7 @@ html.dark .hero__cta-btn:hover {
 /* Small mobile responsive */
 @media (max-width: 480px) {
   .hero__slider-wrap {
-    aspect-ratio: 16 / 9;
-    min-height: 185px;
-    max-height: 260px;
+    aspect-ratio: 3 / 1;
   }
   .hero__content {
     padding: 36px 0 44px;
@@ -414,22 +409,26 @@ html.dark .hero__cta-btn:hover {
     margin-bottom: 20px;
   }
   .hero-slider__btn {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
   }
-  .hero-slider__btn--prev { left: 6px; }
-  .hero-slider__btn--next { right: 6px; }
+  .hero-slider__btn svg {
+    width: 12px;
+    height: 12px;
+  }
+  .hero-slider__btn--prev { left: 3px; }
+  .hero-slider__btn--next { right: 3px; }
   .hero-slider__dots {
-    bottom: 8px;
-    padding: 3px 8px;
-    gap: 5px;
+    bottom: 5px;
+    padding: 2px 6px;
+    gap: 4px;
   }
   .hero-slider__dot {
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
   }
   .hero-slider__dot.active {
-    width: 16px;
+    width: 12px;
   }
 }
 

@@ -155,7 +155,7 @@ export default function Hero() {
               )}
 
               {!slide.isBanner && <div className="hero-slider__overlay" />}
-              {slide.badge && <span className="hero-slider__badge">{slide.badge}</span>}
+              {!slide.isBanner && slide.badge && <span className="hero-slider__badge">{slide.badge}</span>}
             </div>
           ))}
         </div>
