@@ -1,9 +1,32 @@
+# 1. Matikan Directory Browsing (Mencegah "Index of /...")
+Options -Indexes
+
+# 2. Set default index file
+DirectoryIndex index.html
+
+# 3. Blokir akses ke file sensitif / tersembunyi (.git, .env, .htaccess, dll.)
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# 4. Routing Single Page Application (SPA)
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
+
+  # Jika request merupakan file fisik yang nyata ada (misal /assets/index-xxx.js atau /images/logo.svg)
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Jika bukan file fisik (misal /assets/, /produk, /halaman-tidak-ada, dll.),
+  # rewrite ke index.html agar ditangani oleh router React dan menampilkan halaman 404
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
   RewriteRule . /index.html [L]
 </IfModule>
+
+# 5. Fallback Error Documents ke index.html untuk 404/403
+ErrorDocument 403 /index.html
+ErrorDocument 404 /index.html
+

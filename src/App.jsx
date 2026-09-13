@@ -21,6 +21,21 @@ export default function App() {
   const [path, setPath] = useState(() => (typeof window !== 'undefined' ? window.location.pathname : '/'));
 
   useEffect(() => {
+    // Dismiss preloader smoothly after React mounts
+    const timer = setTimeout(() => {
+      const preloader = document.getElementById('paperink-preloader');
+      if (preloader && !preloader.classList.contains('preloader--hidden')) {
+        preloader.classList.add('preloader--hidden');
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 550);
+      }
+    }, 600);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
