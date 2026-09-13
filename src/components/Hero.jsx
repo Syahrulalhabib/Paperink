@@ -4,7 +4,8 @@ import './Hero.css';
 const HERO_SLIDES = [
   {
     id: 1,
-    src: '/images/banner-hero.png',
+    src: '/images/banner-hero.png',              // Web / Desktop banner
+    mobileSrc: '/images/banner-hero-mobile.png', // Mobile banner
     alt: 'Paperink Official Corporate Merchandise Showcase',
     badge: 'Paperink Official',
     isBanner: true,
@@ -125,27 +126,36 @@ export default function Hero() {
         >
           {HERO_SLIDES.map((slide, idx) => (
             <div className="hero-slider__slide" key={slide.id}>
-              {/* Ambient blurred backdrop so full 1 page is filled without cropping 1:1 photo */}
-              <div
-                className="hero-slider__bg"
-                style={{ backgroundImage: `url(${slide.src})` }}
-                aria-hidden="true"
-              />
-              {!imgErrors[slide.id] ? (
-                <img
-                  src={slide.src}
-                  alt={slide.alt}
-                  className={`hero-slider__img ${slide.isBanner ? 'hero-slider__img--banner' : 'hero-slider__img--square'}`}
-                  loading={idx === 0 ? 'eager' : 'lazy'}
-                  onError={() => setImgErrors((p) => ({ ...p, [slide.id]: true }))}
+              {/* Blurred backdrop only for non-banner square items */}
+              {!slide.isBanner && (
+                <div
+                  className="hero-slider__bg"
+                  style={{ backgroundImage: `url(${slide.src})` }}
+                  aria-hidden="true"
                 />
+              )}
+
+              {!imgErrors[slide.id] ? (
+                <picture className="hero-slider__picture">
+                  {slide.mobileSrc && (
+                    <source media="(max-width: 768px)" srcSet={slide.mobileSrc} />
+                  )}
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    className={`hero-slider__img ${slide.isBanner ? 'hero-slider__img--banner' : 'hero-slider__img--square'}`}
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                    onError={() => setImgErrors((p) => ({ ...p, [slide.id]: true }))}
+                  />
+                </picture>
               ) : (
                 <div className="hero-slider__fallback">
                   <span>Paperink Merchandise</span>
                 </div>
               )}
-              <div className="hero-slider__overlay" />
-              <span className="hero-slider__badge">{slide.badge}</span>
+
+              {!slide.isBanner && <div className="hero-slider__overlay" />}
+              {slide.badge && <span className="hero-slider__badge">{slide.badge}</span>}
             </div>
           ))}
         </div>
@@ -182,28 +192,8 @@ export default function Hero() {
             />
           ))}
         </div>
-
-        {/* Scroll hint to text below */}
-        <button
-          type="button"
-          className="hero-slider__scroll-hint"
-          onClick={(e) => {
-            e.stopPropagation();
-            const el = document.getElementById('hero-content');
-            if (el) {
-              const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 80;
-              window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
-            }
-          }}
-          aria-label="Scroll ke konten"
-        >
-          <span>Scroll</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </button>
       </div>
-      {/* 2. Text Content (Underneath the full-screen slider) */}
+      {/* 2. Text Content (Underneath the banner slider) */}
       <div className="hero__content" id="hero-content">
         <div className="container">
           <div className="hero__tag">
