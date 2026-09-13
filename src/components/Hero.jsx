@@ -6,56 +6,47 @@ const HERO_SLIDES = [
     id: 1,
     src: '/images/banner/banner-hero.png',
     alt: 'Paperink Official Corporate Merchandise Showcase',
-    badge: 'Paperink Official',
     isBanner: true,
   },
   {
     id: 2,
     src: '/images/tumbler/classic/classic.png',
     alt: 'Classic Tumbler Custom Corporate',
-    badge: 'Drinkware',
   },
   {
     id: 3,
     src: '/images/tumbler/tumbler-sport-jumbo.jpg',
     alt: 'Tumbler Sport Jumbo Corporate Gifting',
-    badge: 'Drinkware',
   },
   {
     id: 4,
     src: '/images/tumbler/tumbler-mug/tumbler-mug-1.png',
     alt: 'Tumbler Mug Stainless Steel',
-    badge: 'Drinkware',
   },
   {
     id: 5,
     src: '/images/notebook/standard/notebook-1.png',
     alt: 'Standard Corporate Notebook',
-    badge: 'Notebook & Pen',
   },
   {
     id: 6,
     src: '/images/sticky-notes/sticky-notes-1.png',
     alt: 'Sticky Notes Custom Set',
-    badge: 'Stationery',
   },
   {
     id: 7,
     src: '/images/notebook/notebook-planer-maple.jpg',
     alt: 'Notebook Planner Maple Series',
-    badge: 'Notebook & Pen',
   },
   {
     id: 8,
     src: '/images/flashdisk/standard/flashdisk-2.png',
     alt: 'Standard Custom Metal Flashdisk',
-    badge: 'Flashdisk',
   },
   {
     id: 9,
     src: '/images/flashdisk/otg/flashdisk-otg-1.png',
     alt: 'Flashdisk OTG Dual Port Corporate',
-    badge: 'Flashdisk',
   },
 ];
 
@@ -154,7 +145,6 @@ export default function Hero() {
               )}
 
               {!slide.isBanner && <div className="hero-slider__overlay" />}
-              {!slide.isBanner && slide.badge && <span className="hero-slider__badge">{slide.badge}</span>}
             </div>
           ))}
         </div>

@@ -114,25 +114,6 @@
   z-index: 3;
 }
 
-.hero-slider__badge {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #FFFFFF;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  z-index: 4;
-  pointer-events: none;
-}
-
 /* Nav Buttons */
 .hero-slider__btn {
   position: absolute;
@@ -351,12 +332,6 @@ html.dark .hero__cta-btn:hover {
   }
   .hero-slider__btn--prev { left: 4px; }
   .hero-slider__btn--next { right: 4px; }
-  .hero-slider__badge {
-    top: 8px;
-    left: 8px;
-    font-size: 0.65rem;
-    padding: 2px 8px;
-  }
   .hero-slider__dots {
     bottom: 6px;
     padding: 3px 8px;
